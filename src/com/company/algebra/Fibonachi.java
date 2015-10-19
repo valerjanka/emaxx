@@ -4,7 +4,7 @@ import com.company.components.MatrixBuilder;
 import com.company.components.SquareMatrix;
 
 /**
- * Created by Luba on 3/8/2015.
+ * Created by vryzhuk on 3/8/2015.
  */
 public class Fibonachi {
     /**

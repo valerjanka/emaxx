@@ -1,7 +1,7 @@
 package com.company.algebra;
 
 /**
- * Created by Luba on 3/8/2015.
+ * Created by vryzhuk on 3/8/2015.
  */
 public class BinaryUtils {
 
@@ -71,7 +71,7 @@ public class BinaryUtils {
         return result;
     }
 
-    public static interface BinaryStepAction<T> {
+    public interface BinaryStepAction<T> {
         T nextNumber(T number);
         T operator(T result, T number);
         T zeroResult();

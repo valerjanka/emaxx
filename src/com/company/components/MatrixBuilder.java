@@ -1,7 +1,7 @@
 package com.company.components;
 
 /**
- * Created by Luba on 3/8/2015.
+ * Created by vryzhuk on 3/8/2015.
  */
 public class MatrixBuilder {
     public static SquareMatrix build2n2(int a11, int a12, int a21, int a22) {

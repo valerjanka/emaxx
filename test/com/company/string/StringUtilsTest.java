@@ -13,6 +13,9 @@ public class StringUtilsTest {
     private static final char[] TEST_AAABAAB = "aaabaab".toCharArray();
     private static final int[] TEST_AAABAAB_RESULT = new int[] { 0, 2, 1, 0, 2, 1, 0 };
 
+    private static final char[] TEST_ABCABCD = "abcabcd".toCharArray();
+    private static final int[] TEST_ABCABCD_PREFIX_FUNCTION_RESULT = new int[] {0, 0, 0, 1, 2, 3, 0};
+
     @Test
     public void testZFunctionWithNull() {
         assertNull(StringUtils.zFunction(null));
@@ -29,7 +32,7 @@ public class StringUtilsTest {
     public void testZFunctionWithOneElement() {
         int[] result = StringUtils.zFunction(new char[] { 'a' });
         assertNotNull(result);
-        assertArrayEquals(new int[] { 0 }, result);
+        assertArrayEquals(new int[]{0}, result);
     }
 
     @Test
@@ -51,5 +54,15 @@ public class StringUtilsTest {
         int[] result = StringUtils.zFunction(TEST_AAABAAB);
         assertNotNull(result);
         assertArrayEquals(TEST_AAABAAB_RESULT, result);
+    }
+
+    @Test
+    public void testPrefixFuntionWithEmptyString() {
+        assertArrayEquals(new int[0], StringUtils.prefixFunction("".toCharArray()));
+    }
+
+    @Test
+    public void testPrefixFuntionWithABCABCD() {
+        assertArrayEquals(TEST_ABCABCD_PREFIX_FUNCTION_RESULT, StringUtils.prefixFunction(TEST_ABCABCD));
     }
 }
