@@ -59,7 +59,7 @@ public class Euclid {
     /**
      * ax+by=gcd(a,b)
      *
-     * Iterative algorithm:
+     * Recalculate in each recursion iteration algorithm:
      * x = y1 - b/a * x1;
      * y = x1;
      *
