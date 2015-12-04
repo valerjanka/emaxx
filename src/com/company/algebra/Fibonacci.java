@@ -6,7 +6,7 @@ import com.company.components.SquareMatrix;
 /**
  * Created by vryzhuk on 3/8/2015.
  */
-public class Fibonachi {
+public class Fibonacci {
     /**
      * Fn = Fn-1 + Fn-2
      * F2n = Fn*(Fn+1 + Fn-1)

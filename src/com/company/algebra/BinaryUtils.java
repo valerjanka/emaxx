@@ -27,7 +27,7 @@ public class BinaryUtils {
     }
 
     /**
-     * Returns a*b / mod
+     * Returns a*b % mod
      * 0 < a,b < MAX_LONG/2
      * a*b = a * (2^k1 + 2^k2 + ...)
      * @param a
