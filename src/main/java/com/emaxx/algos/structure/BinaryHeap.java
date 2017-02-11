@@ -2,6 +2,9 @@ package com.emaxx.algos.structure;
 
 /**
  * Created by valerii.ryzhuk on 1/2/2016.
+ *
+ * Binary Heap structure satisfying max-heap ordering: the value of each node is less than or equal to the value of its
+ * parent.
  */
 public class BinaryHeap {
     private int keys[];
@@ -33,6 +36,7 @@ public class BinaryHeap {
             int maxChildPosition = getMaxChildPosition(k);
             if(keys[k] < keys[maxChildPosition]) {
                 swap(k, maxChildPosition);
+                k = maxChildPosition;
             } else {
                 return;
             }
