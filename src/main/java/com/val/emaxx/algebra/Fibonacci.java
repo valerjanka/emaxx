@@ -4,7 +4,7 @@ import com.val.emaxx.components.MatrixBuilder;
 import com.val.emaxx.components.SquareMatrix;
 
 /**
- * Created by vryzhuk on 3/8/2015.
+ * @author valerjanka
  */
 public class Fibonacci {
     /**
@@ -14,8 +14,8 @@ public class Fibonacci {
      * Calculate Fn via fast binary calculation
      * Implements next logic: (F0 F1) * (0 1, 1 1)^n = (Fn-1 Fn)
      *
-     * @param n
-     * @return
+     * @param n the number of Fibonachi number
+     * @return nth value of Fibonachi number using fast binary exponentiation
      */
     public static int binary(int n) {
         if (n < 2) {

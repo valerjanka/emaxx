@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * Created by valerii.ryzhuk on 12/1/2015.
+ * @author valerjanka
  */
 public class BreadthFirstPathsForNotConnectedComponents {
     private boolean[] marked;
@@ -37,15 +37,13 @@ public class BreadthFirstPathsForNotConnectedComponents {
 
             while (!queue.isEmpty()) {
                 int v = queue.poll();
-                for (int w : graph.adj(v)) {
-                    if (!marked[w]) {
-                        marked[w] = true;
-                        distTo[w] = distTo[v] + 1;
-                        parent[w] = v;
-                        parentStart[w] = start;
-                        queue.offer(w);
-                    }
-                }
+                graph.adj(v).stream().filter(w -> !marked[w]).forEach(w -> {
+                    marked[w] = true;
+                    distTo[w] = distTo[v] + 1;
+                    parent[w] = v;
+                    parentStart[w] = start;
+                    queue.offer(w);
+                });
             }
         }
     }

@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by valerii.ryzhuk on 12/1/2015.
+ * @author valerjanka
  */
 public class TwoCentersOfTreeTest {
     private TwoCentersOfTree twoCentersOfTree;

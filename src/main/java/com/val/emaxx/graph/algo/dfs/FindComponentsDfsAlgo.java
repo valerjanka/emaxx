@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 /**
- * Created by valerii.ryzhuk on 11/15/2015.
+ * @author valerjanka
  */
 public class FindComponentsDfsAlgo implements DfsAlgo {
     private Graph graph;

@@ -4,12 +4,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by valerii.ryzhuk on 11/7/2015.
+ * @author valerjanka
  */
 public abstract class AbstractGraph implements Graph {
-    protected LinkedList<Integer>[] verticesToAdjacencyList;
+    LinkedList<Integer>[] verticesToAdjacencyList;
 
-    public AbstractGraph(int vertices) {
+    @SuppressWarnings("unchecked")
+    AbstractGraph(int vertices) {
         verticesToAdjacencyList = (LinkedList<Integer>[]) new LinkedList[vertices];
         for (int i = 0; i < vertices; i++) {
             verticesToAdjacencyList[i] = new LinkedList<>();

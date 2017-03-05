@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Created by valerii.ryzhuk on 11/25/2015.
+ * @author valerjanka
  */
 public class BreadthFirstPaths {
     private boolean[] marked;
@@ -33,14 +33,12 @@ public class BreadthFirstPaths {
 
         while(!queue.isEmpty()) {
             int v = queue.poll();
-            for(int w : graph.adj(v)) {
-                if(!marked[w]) {
-                    marked[w] = true;
-                    distTo[w] = distTo[v] + 1;
-                    parent[w] = v;
-                    queue.offer(w);
-                }
-            }
+            graph.adj(v).stream().filter(w -> !marked[w]).forEach(w -> {
+                marked[w] = true;
+                distTo[w] = distTo[v] + 1;
+                parent[w] = v;
+                queue.offer(w);
+            });
         }
     }
 

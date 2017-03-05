@@ -14,21 +14,14 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by valerii.ryzhuk on 11/15/2015.
+ * @author valerjanka
  */
 public class FindReachableVerticesDfsAlgoTest {
     private static final int START_0 = 0;
-    private static final int START_1 = 1;
     private static final int VERTICES = 4;
 
     private static final List<Integer> ADJ_0 = Arrays.asList(1, 2, 3);
     private static final List<Integer> ADJ_0_ANSWER = Arrays.asList(1, 2, 3);
-    private static final List<Integer> ADJ_0_ANSWER_WITH_MARKED_1 = Arrays.asList(2, 3);
-    private static final List<Integer> ADJ_1 = Arrays.asList(0, 2, 3);
-    private static final List<Integer> ADJ_1_ANSWER = Arrays.asList(0, 2, 3);
-
-    private static final boolean[] markedNone = new boolean[]{false, false, false, false};
-    private static final boolean[] marked0 = new boolean[]{true, false, false, false};
 
     private Graph graph;
 

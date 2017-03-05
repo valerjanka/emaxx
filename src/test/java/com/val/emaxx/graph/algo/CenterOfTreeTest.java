@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by valerii.ryzhuk on 11/25/2015.
+ * @author valerjanka
  */
 public class CenterOfTreeTest {
 

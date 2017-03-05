@@ -1,7 +1,7 @@
 package com.val.emaxx.algebra;
 
 /**
- * Created by valerii.ryzhuk on 10/27/2015.
+ * @author valerjanka
  */
 public class Primes {
     /**

@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by valerii.ryzhuk on 11/18/2015.
+ * @author valerjanka
  */
 public class FindReachablePathDfsAlgo extends FindReachableVerticesDfsAlgo implements DfsAlgo {
     private int[] parentIds;

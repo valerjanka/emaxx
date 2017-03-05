@@ -1,10 +1,9 @@
 package com.val.emaxx.graph;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by valerii.ryzhuk on 11/7/2015.
+ * @author valerjanka
  */
 public interface Graph {
     List<Integer> adj(int v);

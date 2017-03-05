@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by valerii.ryzhuk on 11/25/2015.
+ * @author valerjanka
  */
 public class DiameterOfTree {
     public static List<Integer> getDiameter(UnDiGraph graph) {

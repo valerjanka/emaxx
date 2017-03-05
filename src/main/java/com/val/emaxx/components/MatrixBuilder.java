@@ -1,7 +1,7 @@
 package com.val.emaxx.components;
 
 /**
- * Created by vryzhuk on 3/8/2015.
+ * @author valerjanka
  */
 public class MatrixBuilder {
     public static SquareMatrix build2n2(int a11, int a12, int a21, int a22) {

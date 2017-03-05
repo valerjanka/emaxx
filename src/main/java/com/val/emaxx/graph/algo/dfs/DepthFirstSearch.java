@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by valerii.ryzhuk on 11/13/2015.
+ * @author valerjanka
  */
 public class DepthFirstSearch {
 
@@ -94,9 +94,7 @@ public class DepthFirstSearch {
 
     private static Iterable<Integer> getReverseOrder(List<Integer> adj) {
         LinkedList<Integer> result = new LinkedList<>();
-        for(int v : adj) {
-            result.addFirst(v);
-        }
+        adj.forEach(result::addFirst);
         return result;
     }
 

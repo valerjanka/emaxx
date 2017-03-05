@@ -66,9 +66,9 @@ public class EuclidTest {
     @Test
     public void testSolve() throws Exception {
         Euclid.EuclidResult result = Euclid.solveDiophantineEquation(2, 1, 3);
-        assertEquals(3, 3*result.x + 1*result.y);
+        assertEquals(3, 3*result.x + result.y);
         result = Euclid.solveDiophantineEquation(2, 1, 5);
-        assertEquals(5, 3*result.x + 1*result.y);
+        assertEquals(5, 3*result.x + result.y);
         result = Euclid.solveDiophantineEquation(3, 2, 3);
         assertEquals(3, 3*result.x + 2*result.y);
     }

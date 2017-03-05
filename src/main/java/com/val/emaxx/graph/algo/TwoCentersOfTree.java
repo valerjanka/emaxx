@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by valerii.ryzhuk on 11/25/2015.
+ * @author valerjanka
  */
 public class TwoCentersOfTree {
     private int firstCenter;

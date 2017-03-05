@@ -1,13 +1,13 @@
 package com.val.emaxx.structure;
 
 /**
- * Created by valerii.ryzhuk on 1/2/2016.
+ * @author valerjanka
  */
 public class SqrtDecomposition<ITEM_TYPE> {
-    private ITEM_TYPE[] items;
+    private final ITEM_TYPE[] items;
     private Node[] decomposed;
     private int decomposedStep;
-    private ItemSelector<ITEM_TYPE> itemSelector;
+    private final ItemSelector<ITEM_TYPE> itemSelector;
 
     public SqrtDecomposition(ITEM_TYPE[] items, ItemSelector<ITEM_TYPE> itemSelector) {
         this.items = items;
@@ -15,6 +15,7 @@ public class SqrtDecomposition<ITEM_TYPE> {
         decompose();
     }
 
+    @SuppressWarnings("unchecked")
     private void decompose() {
         int decomposeSize = (int) Math.sqrt(items.length);
         decomposed = (Node[]) new Object[decomposeSize];
@@ -57,9 +58,9 @@ public class SqrtDecomposition<ITEM_TYPE> {
     }
 
     class Node {
-        private ITEM_TYPE item;
-        private int l;
-        private int r;
+        private final ITEM_TYPE item;
+        private final int l;
+        private final int r;
 
         public Node(int l, int r) {
             this.l = l;

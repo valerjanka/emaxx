@@ -1,10 +1,10 @@
 package com.val.emaxx.components;
 
 /**
- * Created by vryzhuk on 3/8/2015.
+ * @author valerjanka
  */
 public class SquareMatrix {
-    private int[][] matrix;
+    private final int[][] matrix;
 
     public SquareMatrix(int n) {
         matrix = new int[n][n];

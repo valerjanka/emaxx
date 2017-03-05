@@ -1,7 +1,7 @@
 package com.val.emaxx.graph;
 
 /**
- * Created by valerii.ryzhuk on 11/7/2015.
+ * @author valerii.ryzhuk
  */
 public class DiGraphImpl extends AbstractGraph implements DiGraph {
     int edges = 0;

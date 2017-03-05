@@ -1,9 +1,8 @@
 package com.val.emaxx.graph.algo.dfs;
 
-import java.util.Iterator;
 
 /**
- * Created by valerii.ryzhuk on 11/15/2015.
+ * @author valerjanka
  */
 public interface DfsAlgo {
     boolean hasNextStep();

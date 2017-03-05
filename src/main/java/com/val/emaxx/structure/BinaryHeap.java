@@ -1,7 +1,7 @@
 package com.val.emaxx.structure;
 
 /**
- * Created by valerii.ryzhuk on 1/2/2016.
+ * @author valerjanka
  */
 public class BinaryHeap {
     private int keys[];
@@ -24,11 +24,12 @@ public class BinaryHeap {
         int result = keys[size];
         keys[1] = keys[size];
         --size;
-        propagate(1);
+        propagate();
         return result;
     }
 
-    private void propagate(int k) {
+    private void propagate() {
+        int k = 1;
         while(2*k <= size) {
             int maxChildPosition = getMaxChildPosition(k);
             if(keys[k] < keys[maxChildPosition]) {

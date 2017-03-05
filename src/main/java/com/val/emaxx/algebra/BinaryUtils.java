@@ -1,7 +1,7 @@
 package com.val.emaxx.algebra;
 
 /**
- * Created by vryzhuk on 3/8/2015.
+ * @author valerjanka
  */
 public class BinaryUtils {
 
@@ -9,10 +9,10 @@ public class BinaryUtils {
      * Returns number ^ degree % mod
      * All numbers < MAX_INT
      *
-     * @param number
-     * @param degree
-     * @param mod
-     * @return
+     * @param number to be powered
+     * @param degree to which power the number
+     * @param mod by which return the result
+     * @return number in the degree by modulo
      */
     public static int pow(int number, int degree, int mod) {
         long result = 1;
@@ -30,10 +30,10 @@ public class BinaryUtils {
      * Returns a*b % mod
      * 0 < a,b < MAX_LONG/2
      * a*b = a * (2^k1 + 2^k2 + ...)
-     * @param a
-     * @param b
-     * @param mod
-     * @return
+     * @param a first factor
+     * @param b second factor
+     * @param mod modulo
+     * @return a product of multiplication by module
      */
     public static long multiply(long a, long b, long mod) {
         long result = 0;
