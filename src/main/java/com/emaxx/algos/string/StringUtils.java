@@ -8,7 +8,7 @@ public class StringUtils {
      * of this string. The 0-th element = 0.
      * Description: http://e-maxx.ru/algo/z_function
      * 
-     * Examples: "abacaba" -> 0010301 "aaaaa" -> 04321
+     * Examples: "abacaba" -> 0010301, "aaaaa" -> 04321
      * 
      * @param string array of chars
      * @return z-function
