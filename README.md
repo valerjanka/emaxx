@@ -33,6 +33,9 @@ generic approaches to solve some type of problems (package com.val.algos.generic
   * Multiply for long: a * b % mod  O(log b)
 2. Fibonacci (Fibonacci class)
   * Calculates fibonacci numbers by using generic approach for fast binary calculation and matrix
+3. Binary Search
+  * Search for specific element in an array or list
+  * Search by condition in an array or list
 
 ### Graphs
 1. BFS
