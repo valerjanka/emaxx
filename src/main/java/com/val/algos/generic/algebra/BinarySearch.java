@@ -78,6 +78,13 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * Search for exact element in given array
+     * @param array where to search
+     * @param element to search
+     * @param <T> type of comparable elements
+     * @return position of element or -1
+     */
     public static <T extends Comparable<T>> int searchForElement(T[] array, T element) {
         ArrayStopCondition<T> condition = (array1, position) -> element.compareTo(array1[position]);
         return search(array, condition);
