@@ -2,7 +2,7 @@ package com.val.algos.emaxx.structure;
 
 /**
  * tree[i] = sum of a[j], where j from [F(i) ; i],
- * F(i) = i & (i+1) (it equals i if last bit is 1, otherwise i without all last group of 1s)
+ * F(i) = i & (i+1) (it equals i if last bit is 0, otherwise i without all last group of 1s)
  * <br>
  * <b>SUM</b>: to find sum from [0, r] we need to sum next values from tree:<br>
  * 1) [F(r)...r] = tree[r] <br>

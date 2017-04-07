@@ -25,6 +25,11 @@ generic approaches to solve some type of problems (package com.val.algos.generic
   * Amount of specific substring in current string
 2. Prefix function
 
+### Structures
+1. Binary Heap - int minimum binary heap (similar to PriorityQueue)
+2. Fenwick Tree Sum - log(n) update elements and get prefix sum
+
+
 ## Current list of implemented generic algorithms (com.val.algos.generic):
 ### Algebra
 1. Binary multiplication (BinaryUtils class)
@@ -47,6 +52,10 @@ generic approaches to solve some type of problems (package com.val.algos.generic
   * Find reachable vertices
 3. Diameter and Center of Tree
 5. Two centers of tree
+
+### Structures
+1. Binary Heap - for Comparable elements
+2. SQRT Decomposition - with generic elements and Item Selector (compare element with current result)
 
 (http://e-maxx.ru) is very good russian site with a good explanations, analysis and implementations (on C++) of many kinds of algorithms.
 Thanks to emaxx for this!

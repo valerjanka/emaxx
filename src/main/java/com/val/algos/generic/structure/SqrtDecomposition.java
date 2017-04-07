@@ -1,4 +1,4 @@
-package com.val.algos.emaxx.structure;
+package com.val.algos.generic.structure;
 
 /**
  * @author valerjanka

@@ -1,6 +1,7 @@
 package com.val.algos.emaxx.structure;
 
 /**
+ * Min Binary Heap implementation similar to {@link java.util.PriorityQueue}
  * @author valerjanka
  */
 public class BinaryHeap {
@@ -17,11 +18,18 @@ public class BinaryHeap {
         swim(size);
     }
 
+    public int peek() {
+        if(size == 0) {
+            throw new IllegalStateException("Can't peek min element from empty queue");
+        }
+        return keys[1];
+    }
+
     public int poll() {
         if(size == 0) {
-            throw new IllegalStateException("Can't delete max element from empty queue");
+            throw new IllegalStateException("Can't poll min element from empty queue");
         }
-        int result = keys[size];
+        int result = keys[1];
         keys[1] = keys[size];
         --size;
         propagate();
@@ -31,25 +39,25 @@ public class BinaryHeap {
     private void propagate() {
         int k = 1;
         while(2*k <= size) {
-            int maxChildPosition = getMaxChildPosition(k);
-            if(keys[k] < keys[maxChildPosition]) {
-                swap(k, maxChildPosition);
+            int minChildPosition = getMinChildPosition(k);
+            if(keys[k] > keys[minChildPosition]) {
+                swap(k, minChildPosition);
             } else {
                 return;
             }
         }
     }
 
-    private int getMaxChildPosition(int k) {
+    private int getMinChildPosition(int k) {
         if(2*k+1 <= size) {
-            return (keys[2*k] > keys[2*k+1])? keys[2*k] : keys[2*k+1];
+            return (keys[2*k] < keys[2*k+1])? keys[2*k] : keys[2*k+1];
         } else {
             return keys[2*k];
         }
     }
 
     private void swim(int k) {
-        while(k > 1 && keys[k] > keys[k/2]) {
+        while(k > 1 && keys[k/2] > keys[k]) {
             swap(k, k/2);
             k = k /2;
         }
