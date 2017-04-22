@@ -28,6 +28,7 @@ generic approaches to solve some type of problems (package com.val.algos.generic
 ### Structures
 1. Binary Heap - int minimum binary heap (similar to PriorityQueue)
 2. Fenwick Tree Sum - log(n) update elements and get prefix sum
+3. Mo's Sqrt Decomposition - offline calculation of query's results N^1.5
 
 
 ## Current list of implemented generic algorithms (com.val.algos.generic):
@@ -56,6 +57,7 @@ generic approaches to solve some type of problems (package com.val.algos.generic
 ### Structures
 1. Binary Heap - for Comparable elements
 2. SQRT Decomposition - with generic elements and Item Selector (compare element with current result)
+3. Mo's Sqrt Decomposition - offline calculation of query's results N^1.5. Uses generic function to move left/right boundaries
 
 (http://e-maxx.ru) is very good russian site with a good explanations, analysis and implementations (on C++) of many kinds of algorithms.
 Thanks to emaxx for this!
