@@ -3,7 +3,8 @@ package com.val.algos.generic.structure;
 import java.util.*;
 
 /**
- * MO’s Algorithm (Query square root decomposition). Complexity is N * Sqrt(N) for
+ * MO’s Algorithm (Query square root decomposition). Complexity is N * Sqrt(N) for all queries.
+ * Current implementation does not support update operation
  * See <a href="https://blog.anudeep2011.com/mos-algorithm/">https://blog.anudeep2011.com/mos-algorithm/</a>
  * <br>
  * Given an array of size N. All elements of array <= N. You need to answer M queries. Each query is of the form L, R. You need to answer the count of values in range [L, R] which are repeated at least 'repeated' times.
@@ -27,10 +28,20 @@ public class MoSqrtDecomposition {
         this.function = function;
     }
 
+    /**
+     * Add query for offline processing.
+     * @param l
+     * @param r
+     */
     public void addQuery(int l, int r) {
         queries.add(new Query(l, r, queries.size()));
     }
 
+    /**
+     * Calculate answers for previous added queries
+     *
+     * @return
+     */
     public int[] getAnswers() {
         sort(queries);
         int[] result = new int[queries.size()];
@@ -75,7 +86,7 @@ public class MoSqrtDecomposition {
         }
     }
 
-    public static interface Function {
+    public interface Function {
         void add(int i);
         void remove(int i);
         int currentResult();

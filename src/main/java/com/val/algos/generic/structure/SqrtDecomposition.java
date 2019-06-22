@@ -25,6 +25,13 @@ public class SqrtDecomposition<ITEM_TYPE> {
         }
     }
 
+    /**
+     * Calculate result on [l, r] segment by ItemSelector
+     * @param l left segment border inclusive
+     * @param r right segment border inclusive
+     *
+     * @return
+     */
     public ITEM_TYPE get(int l, int r) {
         if (l >= items.length || r >= items.length) {
             throw new IndexOutOfBoundsException("l or r is out of array size");
@@ -57,7 +64,7 @@ public class SqrtDecomposition<ITEM_TYPE> {
         return result;
     }
 
-    class Node {
+    private class Node {
         private final ITEM_TYPE item;
         private final int l;
         private final int r;
