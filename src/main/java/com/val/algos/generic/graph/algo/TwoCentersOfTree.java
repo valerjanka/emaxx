@@ -10,12 +10,12 @@ import java.util.Arrays;
  * @author valerjanka
  */
 public class TwoCentersOfTree {
-    private int firstCenter;
-    private int secondCenter;
+    private final int firstCenter;
+    private final int secondCenter;
 
 
     public TwoCentersOfTree(UnDiGraph graph) {
-        if(graph.vertices() == 1) {
+        if (graph.vertices() == 1) {
             firstCenter = 0;
             secondCenter = 0;
             return;

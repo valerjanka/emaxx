@@ -2,12 +2,8 @@ package com.val.algos.emaxx.algebra;
 
 /**
  * User: vryzhuk
- *
- * Resource: http://e-maxx.ru/algo/extended_euclid_algorithm
- * http://e-maxx.ru/algo/euclid_algorithm
- *
- * Date: 5/2/15
- * Time: 2:19 PM
+ * Resource: <a href="http://e-maxx.ru/algo/extended_euclid_algorithm">e-maxx.ru/algo/extended_euclid_algorithm.</a>
+ * <a href="http://e-maxx.ru/algo/euclid_algorithm">e-maxx.ru/algo/euclid_algorithm.</a>
  */
 public class Euclid {
 
@@ -45,12 +41,12 @@ public class Euclid {
     /**
      * Calculates least common multiplier by using gcd_iterative:
      * lcm = a / gcd * b;
-     *
+     * <p>
      * GCD can not be 0
      *
      * @param a first number
      * @param b second number
-     * @return LCM(a,b)
+     * @return LCM(a, b)
      */
     public static long lcm(long a, long b) {
         return a / gcd_iterative(a, b) * b;
@@ -58,14 +54,14 @@ public class Euclid {
 
     /**
      * ax+by=gcd(a,b)
-     *
+     * <p>
      * Recalculate in each recursion iteration algorithm:
      * x = y1 - b/a * x1;
      * y = x1;
      *
      * @param a first number
      * @param b second number
-     * @return x,y and GCD(a,b): ax+by=gcd
+     * @return x, y and GCD(a,b): ax+by=gcd
      */
     public static EuclidResult gcd(long a, long b) {
         EuclidResult result;
@@ -108,8 +104,9 @@ public class Euclid {
 
     /**
      * Calculates inverse= a^-1 mod m =>  a * inverse = 1 mod m.
-     *
+     * <p>
      * GCD of a and m must be 1. Otherwise - IllegalArgumentException.
+     *
      * @param a number for which we calculate inverse element
      * @param m modulo
      * @return inverse
@@ -142,7 +139,6 @@ public class Euclid {
     static class EuclidResult {
         long gcd = 1;
         long x,y;
-        private long x1,y1;
 
         EuclidResult(long gcd, long x, long y) {
             this.gcd = gcd;
@@ -151,9 +147,9 @@ public class Euclid {
         }
 
         public void recalculate(long a, long b) {
-            x1 = x;
-            y1 = y;
-            x = y1 - (b /a) * x1;
+            long x1 = x;
+            long y1 = y;
+            x = y1 - (b / a) * x1;
             y = x1;
         }
 
@@ -166,9 +162,7 @@ public class Euclid {
 
             if (gcd != that.gcd) return false;
             if (x != that.x) return false;
-            if (y != that.y) return false;
-
-            return true;
+            return y == that.y;
         }
 
         @Override

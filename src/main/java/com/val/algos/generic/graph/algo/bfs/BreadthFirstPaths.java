@@ -9,11 +9,11 @@ import java.util.Queue;
  * @author valerjanka
  */
 public class BreadthFirstPaths {
-    private boolean[] marked;
-    private int[] distTo;
-    private int[] parent;
-    private Graph graph;
-    private int start;
+    private final boolean[] marked;
+    private final int[] distTo;
+    private final int[] parent;
+    private final Graph graph;
+    private final int start;
 
     public BreadthFirstPaths(Graph graph, int start) {
         this.graph = graph;

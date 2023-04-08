@@ -18,11 +18,11 @@ import java.util.*;
  * @author valerjanka
  */
 public class MoSqrtDecomposition {
-    private Function function;
-    private List<Query> queries = new ArrayList<>();
+    private final Function function;
+    private final List<Query> queries = new ArrayList<>();
 
     public MoSqrtDecomposition(Function function) {
-        if(function == null) {
+        if (function == null) {
             throw new IllegalArgumentException("function can't be null");
         }
         this.function = function;
@@ -30,8 +30,6 @@ public class MoSqrtDecomposition {
 
     /**
      * Add query for offline processing.
-     * @param l
-     * @param r
      */
     public void addQuery(int l, int r) {
         queries.add(new Query(l, r, queries.size()));
@@ -39,8 +37,6 @@ public class MoSqrtDecomposition {
 
     /**
      * Calculate answers for previous added queries
-     *
-     * @return
      */
     public int[] getAnswers() {
         sort(queries);
@@ -73,7 +69,7 @@ public class MoSqrtDecomposition {
     }
 
     private void sort(List<Query> queries) {
-        Collections.sort(queries, new QueryComparator((int) Math.sqrt(queries.size())));
+        queries.sort(new QueryComparator((int) Math.sqrt(queries.size())));
     }
 
     public static class Query {
@@ -93,11 +89,11 @@ public class MoSqrtDecomposition {
     }
 
     public static class RepeatedFunction implements Function {
-        private int[] values;
-        private int repeated;
+        private final int[] values;
+        private final int repeated;
 
         // temp array to store count of index in values on current segment
-        private int[] count;
+        private final int[] count;
         private int answer = 0;
 
         public RepeatedFunction(int[] values, int repeated, int max_values) {
@@ -127,15 +123,15 @@ public class MoSqrtDecomposition {
     }
 
     public static class MostOftenFunction implements Function {
-        private int[] values;
+        private final int[] values;
         // temp array to store count of index in values on current segment
-        private int[] count;
-        private PriorityQueue<Integer> pq = new PriorityQueue<>(new CountComparator());
+        private final int[] count;
+        private final PriorityQueue<Integer> pq = new PriorityQueue<>(new CountComparator());
 
         public MostOftenFunction(int[] values) {
             this.values = values;
             OptionalInt max = Arrays.stream(values).max();
-            if(!max.isPresent()) {
+            if (!max.isPresent()) {
                 throw new IllegalArgumentException("values is empty");
             }
             count = new int[max.getAsInt() + 1];
@@ -165,7 +161,7 @@ public class MoSqrtDecomposition {
 
             @Override
             public int compare(Integer x, Integer y) {
-                if(count[x] == count[y]) {
+                if (count[x] == count[y]) {
                     return Integer.compare(x, y);
                 } else {
                     return -Integer.compare(count[x], count[y]);
@@ -175,8 +171,8 @@ public class MoSqrtDecomposition {
     }
 
 
-    private class QueryComparator implements Comparator<Query> {
-        private int sqrt;
+    private static class QueryComparator implements Comparator<Query> {
+        private final int sqrt;
 
         public QueryComparator(int sqrt) {
             this.sqrt = sqrt;
@@ -184,7 +180,7 @@ public class MoSqrtDecomposition {
 
         @Override
         public int compare(Query o1, Query o2) {
-            if(o1.l / sqrt != o2.l / sqrt) {
+            if (o1.l / sqrt != o2.l / sqrt) {
                 return Integer.compare(o1.l, o2.l);
             } else {
                 return Integer.compare(o1.r, o2.r);

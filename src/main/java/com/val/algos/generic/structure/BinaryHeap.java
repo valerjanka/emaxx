@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author valerjanka
  */
 public class BinaryHeap<T extends Comparable<T>> {
-    private ArrayList<T> elements;
+    private final ArrayList<T> elements;
     private int realSize;
 
     public BinaryHeap(int size) {

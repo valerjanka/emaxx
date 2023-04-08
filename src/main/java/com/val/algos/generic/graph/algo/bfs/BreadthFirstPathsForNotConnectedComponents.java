@@ -10,12 +10,12 @@ import java.util.Queue;
  * @author valerjanka
  */
 public class BreadthFirstPathsForNotConnectedComponents {
-    private boolean[] marked;
-    private int[] distTo;
-    private int[] parent;
-    private int[] parentStart;
-    private Graph graph;
-    private List<Integer> componentStarts;
+    private final boolean[] marked;
+    private final int[] distTo;
+    private final int[] parent;
+    private final int[] parentStart;
+    private final Graph graph;
+    private final List<Integer> componentStarts;
 
     public BreadthFirstPathsForNotConnectedComponents(Graph graph, List<Integer> componentStarts) {
         this.graph = graph;

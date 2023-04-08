@@ -1,4 +1,4 @@
-package com.val.algos.generic.algebra.search;
+package com.val.algos.emaxx.algebra;
 
 /**
  * Created 4/11/2019

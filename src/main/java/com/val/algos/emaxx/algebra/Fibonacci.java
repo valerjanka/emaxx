@@ -1,6 +1,8 @@
 package com.val.algos.emaxx.algebra;
 
 /**
+ * <a href="http://e-maxx.ru/algo/binary_pow#4">http://e-maxx.ru/algo/binary_pow#4</a>
+ *
  * @author valerjanka
  */
 public class Fibonacci {

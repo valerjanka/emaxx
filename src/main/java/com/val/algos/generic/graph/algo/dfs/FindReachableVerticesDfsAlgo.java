@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
  * Created by valerii.ryzhuk on 11/15/2015.
  */
 public class FindReachableVerticesDfsAlgo implements DfsAlgo {
-    private Graph graph;
-    private int start;
-    private boolean[] marked;
+    private final Graph graph;
+    private final int start;
+    private final boolean[] marked;
     protected Deque<Integer> stack = new LinkedList<>();
 
     public FindReachableVerticesDfsAlgo(Graph graph, int start) {
@@ -87,7 +87,7 @@ public class FindReachableVerticesDfsAlgo implements DfsAlgo {
     }
 
     public static class ResultBuilder implements DfsResultBuilder<FindReachableVerticesDfsAlgo, FindReachableVerticesDfsResult> {
-        private FindReachableVerticesDfsAlgo dfsAlgo;
+        private final FindReachableVerticesDfsAlgo dfsAlgo;
 
         public ResultBuilder(FindReachableVerticesDfsAlgo dfsAlgo) {
             this.dfsAlgo = dfsAlgo;

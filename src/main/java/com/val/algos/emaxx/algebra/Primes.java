@@ -11,13 +11,13 @@ public class Primes {
      * In parallel it calculates all primes to n.
      * We do it iteratively from 2..n.
      * int[] result at the beginning contains 0-s.
-     *
+     * <p>
      * In cycle,
      * 1. if result[i] == 0 ->
-     *  1.1. it is prime and result[i] = i; primes.add(i);
-     *  1.2 else we have already define the lowest prime.
+     * 1.1. it is prime and result[i] = i; primes.add(i);
+     * 1.2 else we have already define the lowest prime.
      * 2. for all founded primes that < result[i]:
-     *  result[i * prime] = prime
+     * result[i * prime] = prime
      *
      * @param n max number
      * @return mas where i element is min prime divisor for i
@@ -40,7 +40,7 @@ public class Primes {
 
 
     /**
-     * Check is n is prime or not. Complexity = sqrt(n)
+     * Check iа n is prime or not. Complexity = sqrt(n)
      * Also n is not prime if it lower than 2
      *
      * @param n number to check primality

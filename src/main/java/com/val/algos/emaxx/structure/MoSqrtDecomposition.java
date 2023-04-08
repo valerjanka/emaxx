@@ -20,12 +20,12 @@ import java.util.Map;
  * @author valerjanka
  */
 public class MoSqrtDecomposition {
-    private int[] values;
+    private final int[] values;
     // amount of at least repetition for value to count for answer
-    private int repeated;
+    private final int repeated;
 
     // temp array to store count of index in values on current segment
-    private int[] count;
+    private final int[] count;
 
     public MoSqrtDecomposition(int[] values, int repeated, int max_values) {
         this.values = values;
@@ -109,8 +109,8 @@ public class MoSqrtDecomposition {
         }
     }
 
-    private class QueryComparator implements Comparator<Pair> {
-        private int sqrt;
+    private static class QueryComparator implements Comparator<Pair> {
+        private final int sqrt;
 
         public QueryComparator(int sqrt) {
             this.sqrt = sqrt;
@@ -118,7 +118,7 @@ public class MoSqrtDecomposition {
 
         @Override
         public int compare(Pair o1, Pair o2) {
-            if(o1.l / sqrt != o2.l / sqrt) {
+            if (o1.l / sqrt != o2.l / sqrt) {
                 return Integer.compare(o1.l, o2.l);
             } else {
                 return Integer.compare(o1.r, o2.r);

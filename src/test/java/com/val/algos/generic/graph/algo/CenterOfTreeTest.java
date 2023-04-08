@@ -4,7 +4,8 @@ import com.val.algos.generic.graph.UnDiGraph;
 import com.val.algos.generic.graph.UnDiGraphImpl;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author valerjanka
@@ -12,7 +13,7 @@ import static org.junit.Assert.*;
 public class CenterOfTreeTest {
 
     @Test
-    public void testGetCenterWith3Nodes() throws Exception {
+    public void testGetCenterWith3Nodes() {
         UnDiGraph graph = new UnDiGraphImpl(3);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
@@ -20,7 +21,7 @@ public class CenterOfTreeTest {
     }
 
     @Test
-    public void testGetCenterWith5Nodes() throws Exception {
+    public void testGetCenterWith5Nodes() {
         UnDiGraph graph = new UnDiGraphImpl(5);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
@@ -30,7 +31,7 @@ public class CenterOfTreeTest {
     }
 
     @Test
-    public void testGetCenterWith5Nodes2() throws Exception {
+    public void testGetCenterWith5Nodes2() {
         UnDiGraph graph = new UnDiGraphImpl(5);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
@@ -40,14 +41,14 @@ public class CenterOfTreeTest {
     }
 
     @Test
-    public void testGetCenterWith2() throws Exception {
+    public void testGetCenterWith2() {
         UnDiGraph graph = new UnDiGraphImpl(2);
         graph.addEdge(0, 1);
         assertTrue(CenterOfTree.getCenter(graph) == 1 || CenterOfTree.getCenter(graph) == 0);
     }
 
     @Test
-    public void testGetCenterWith4() throws Exception {
+    public void testGetCenterWith4() {
         UnDiGraph graph = new UnDiGraphImpl(4);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
@@ -56,13 +57,13 @@ public class CenterOfTreeTest {
     }
 
     @Test
-    public void testGetCenterWith6() throws Exception {
+    public void testGetCenterWith6() {
         UnDiGraph graph = new UnDiGraphImpl(6);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(3, 2);
         graph.addEdge(4, 2);
         graph.addEdge(5, 2);
-        assertTrue(CenterOfTree.getCenter(graph) == 2);
+        assertEquals(2, CenterOfTree.getCenter(graph));
     }
 }

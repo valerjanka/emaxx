@@ -1,4 +1,4 @@
-package com.val.algos.generic.components;
+package com.val.algos.generic.algebra;
 
 /**
  * @author valerjanka

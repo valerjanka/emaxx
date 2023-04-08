@@ -1,6 +1,8 @@
 package com.val.algos.emaxx.structure;
 
 /**
+ * <a href="http://e-maxx.ru/algo/fenwick_tree">http://e-maxx.ru/algo/fenwick_tree</a>
+ * <p>
  * tree[i] = sum of a[j], where j from [F(i) ; i],
  * F(i) = i & (i+1) (it equals i if last bit is 0, otherwise i without all last group of 1s)
  * <br>
@@ -14,7 +16,6 @@ package com.val.algos.emaxx.structure;
  * <b>INC</b>: to update element j, we need to update all elements from tree that cover j: <br>
  *     1) tree[j] += delta <br>
  *     2) <b>j = j | (j+1); while j < len</b> repeat from 1 <br>
- * @author valerii.ryzhuk
  *
  */
 public class FenwickTreeSum

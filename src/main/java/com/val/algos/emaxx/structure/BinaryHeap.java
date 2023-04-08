@@ -5,7 +5,7 @@ package com.val.algos.emaxx.structure;
  * @author valerjanka
  */
 public class BinaryHeap {
-    private int keys[];
+    private final int[] keys;
     private int size = 0;
 
     public BinaryHeap(int size) {
@@ -50,7 +50,7 @@ public class BinaryHeap {
 
     private int getMinChildPosition(int k) {
         if(2*k+1 <= size) {
-            return (keys[2*k] < keys[2*k+1])? keys[2*k] : keys[2*k+1];
+            return Math.min(keys[2 * k], keys[2 * k + 1]);
         } else {
             return keys[2*k];
         }

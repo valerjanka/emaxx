@@ -6,10 +6,10 @@ public class StringUtils {
      * Returns array of length string.length where i-th element equals to the
      * max count of symbols of sub-string that start from i and equals to prefix
      * of this string. The 0-th element = 0.
-     * Description: http://e-maxx.ru/algo/z_function
-     * 
+     * Description: <a href="http://e-maxx.ru/algo/z_function">http://e-maxx.ru/algo/z_function</a>
+     * <p>
      * Examples: "abacaba" -> 0010301 "aaaaa" -> 04321
-     * 
+     *
      * @param string array of chars
      * @return z-function
      */
@@ -35,17 +35,20 @@ public class StringUtils {
         return result;
     }
 
+    /**
+     * <a href="http://e-maxx.ru/algo/prefix_function">http://e-maxx.ru/algo/prefix_function</a>
+     */
     public static int[] prefixFunction(char[] string) {
         if (string == null)
             return null;
         int n = string.length;
         int[] p = new int[n];
         int j = 0;
-        for(int i = 1; i < n; i++) {
-            while(j>0 && string[i] != string[j]) {
-                j= p[j-1];
+        for (int i = 1; i < n; i++) {
+            while (j > 0 && string[i] != string[j]) {
+                j = p[j - 1];
             }
-            if(string[i] == string[j]) {
+            if (string[i] == string[j]) {
                 ++j;
             }
             p[i] = j;

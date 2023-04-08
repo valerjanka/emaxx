@@ -84,7 +84,8 @@ public class BinaryUtils {
 
 
     /**
-     * Create action for binary calculation of pow by mod
+     * Create action for binary calculation of multiply by mod
+     *
      * @param mod is mod
      * @return Long Pow Action by mod
      */

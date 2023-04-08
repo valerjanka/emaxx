@@ -9,14 +9,15 @@ import java.util.List;
 
 /**
  * Store parentIds to restore the path, also store postOrder vertices and path
+ *
  * @author valerjanka
  */
 public class FindReachablePathDfsAlgo extends FindReachableVerticesDfsAlgo implements DfsAlgo {
-    private int[] parentIds;
-    private LinkedList<Integer> postOrder;
-    private List<Integer> path;
-    private int[] markedStackIndex;
-    private Deque<Integer> parentIdStack;
+    private final int[] parentIds;
+    private final LinkedList<Integer> postOrder;
+    private final List<Integer> path;
+    private final int[] markedStackIndex;
+    private final Deque<Integer> parentIdStack;
 
     public FindReachablePathDfsAlgo(Graph graph, int start) {
         super(graph, start);
@@ -65,7 +66,7 @@ public class FindReachablePathDfsAlgo extends FindReachableVerticesDfsAlgo imple
     }
 
     public static class ResultBuilder implements DfsResultBuilder<FindReachablePathDfsAlgo, FindPathDfsResult> {
-        private FindReachablePathDfsAlgo dfsAlgo;
+        private final FindReachablePathDfsAlgo dfsAlgo;
 
         public ResultBuilder(FindReachablePathDfsAlgo dfsAlgo) {
             this.dfsAlgo = dfsAlgo;

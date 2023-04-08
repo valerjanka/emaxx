@@ -1,6 +1,8 @@
 package com.val.algos.emaxx.algebra;
 
 /**
+ * <a href="http://e-maxx.ru/algo/binary_pow">http://e-maxx.ru/algo/binary_pow</a>
+ *
  * @author valerjanka
  */
 public class BinaryUtils {

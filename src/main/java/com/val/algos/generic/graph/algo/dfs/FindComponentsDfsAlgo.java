@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
  * @author valerjanka
  */
 public class FindComponentsDfsAlgo implements DfsAlgo {
-    private Graph graph;
-    private int start;
-    private boolean[] marked;
-    private int[] ids;
-    private Deque<Integer> stack = new LinkedList<>();
+    private final Graph graph;
+    private final int start;
+    private final boolean[] marked;
+    private final int[] ids;
+    private final Deque<Integer> stack = new LinkedList<>();
     private int amountOfMarked;
     private int currentId = 0;
     private int startComponentVertex;
@@ -107,7 +107,7 @@ public class FindComponentsDfsAlgo implements DfsAlgo {
     }
 
     public static class ResultBuilder implements DfsResultBuilder<FindComponentsDfsAlgo, FindComponentsDfsResult> {
-        private FindComponentsDfsAlgo dfsAlgo;
+        private final FindComponentsDfsAlgo dfsAlgo;
 
         public ResultBuilder(FindComponentsDfsAlgo dfsAlgo) {
             this.dfsAlgo = dfsAlgo;

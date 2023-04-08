@@ -1,4 +1,4 @@
-package com.val.algos.generic.algebra.search;
+package com.val.algos.emaxx.algebra;
 
 import org.junit.Test;
 

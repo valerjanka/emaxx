@@ -18,6 +18,7 @@ generic approaches to solve some type of problems (package com.val.algos.generic
 3. Fibonacci - calculates fibonacci numbers by using fast binary calculation and matrix
 4. Primes
   * Lowest prime divisor for all numbers to n O(n)
+5. Binary Search
 
 ### String
 1. Z-function
@@ -59,5 +60,6 @@ generic approaches to solve some type of problems (package com.val.algos.generic
 2. SQRT Decomposition - with generic elements and Item Selector (compare element with current result)
 3. Mo's Sqrt Decomposition - offline calculation of query's results N^1.5. Uses generic function to move left/right boundaries
 
-(http://e-maxx.ru) is very good russian site with a good explanations, analysis and implementations (on C++) of many kinds of algorithms.
+(http://e-maxx.ru) is very good site with detailed explanations, analysis and implementations (on C++) of many kinds of
+algorithms.
 Thanks to emaxx for this!
