@@ -150,7 +150,7 @@ class DepthFirstSearch
 
 class DiGraph
 {
-    private ArrayList<LinkedList<Integer>> verticesToAdjacencyList;
+    private final ArrayList<LinkedList<Integer>> verticesToAdjacencyList;
 
     public DiGraph(int v)
     {
