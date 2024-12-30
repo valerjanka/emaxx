@@ -65,7 +65,7 @@ class BreadthFirstSearch
 
     private void init(DiGraph graph, int source)
     {
-        this.graph = graph.clone();
+        this.graph = graph;
         marked = new boolean[graph.vertices()];
         parent = new int[graph.vertices()];
         distTo = new int[graph.vertices()];
@@ -96,7 +96,7 @@ class DepthFirstSearch
 
     private void init(DiGraph g, int source)
     {
-        graph = g.clone();
+        graph = g;
         this.source = source;
         marked = new boolean[g.vertices()];
         order = new LinkedList<>();
@@ -163,13 +163,12 @@ class DiGraph
 
     public DiGraph(DiGraph graph)
     {
-        verticesToAdjacencyList = (ArrayList<LinkedList<Integer>>)graph.verticesToAdjacencyList.clone();
+        verticesToAdjacencyList = graph.verticesToAdjacencyList;
     }
 
     public LinkedList<Integer> getAdjacencyList(int s)
     {
-        return verticesToAdjacencyList.get(s); // mutable
-        // return verticesToAdjacencyList.get(s).clone(); // immutable
+        return verticesToAdjacencyList.get(s);
     }
 
     public void addEdge(int from, int to)
@@ -181,10 +180,5 @@ class DiGraph
     public int vertices()
     {
         return verticesToAdjacencyList.size();
-    }
-
-    public DiGraph clone()
-    {
-        return new DiGraph(this);
     }
 }
