@@ -1,90 +1,114 @@
 package com.val.algos.generic.structure;
 
+import java.util.Arrays;
+
 /**
+ * SQRT Decomposition for querying aggregated results using a generic items and a aggregation function.
+ *
+ * @param <ITEM_TYPE> Type of items in the array.
  * @author valerjanka
  */
 public class SqrtDecomposition<ITEM_TYPE> {
     private final ITEM_TYPE[] items;
-    private Node[] decomposed;
-    private int decomposedStep;
-    private final ItemSelector<ITEM_TYPE> itemSelector;
+    private final AggregationFunction<ITEM_TYPE> aggregationFunction;
+    private Node[] decomposedNodes;
+    private int itemsPerNode;
 
-    public SqrtDecomposition(ITEM_TYPE[] items, ItemSelector<ITEM_TYPE> itemSelector) {
+    public SqrtDecomposition(ITEM_TYPE[] items, AggregationFunction<ITEM_TYPE> aggregationFunction) {
         this.items = items;
-        this.itemSelector = itemSelector;
+        this.aggregationFunction = aggregationFunction;
         decompose();
     }
 
-    @SuppressWarnings("unchecked")
-    private void decompose() {
+    @SafeVarargs
+    private final void decompose(Node... dummy) {
         int decomposeSize = (int) Math.sqrt(items.length);
-        decomposed = (Node[]) new Object[decomposeSize];
-        decomposedStep = (items.length + decomposeSize - 1) / decomposeSize;
-        for (int i = 0; i < items.length; i += decomposedStep) {
-            decomposed[i] = new Node(i, Math.min(i + decomposedStep, items.length));
+        decomposedNodes = Arrays.copyOf(dummy, decomposeSize);
+        itemsPerNode = (items.length + decomposeSize - 1) / decomposeSize;
+        for (int nodeStart = 0, i = 0; i < decomposeSize; nodeStart += itemsPerNode, i++) {
+            decomposedNodes[i] = new Node(nodeStart, Math.min(nodeStart + itemsPerNode, items.length));
         }
     }
 
     /**
-     * Calculate result on [l, r] segment by ItemSelector
-     * @param l left segment border inclusive
-     * @param r right segment border inclusive
+     * Calculate result on [l, r) segment by aggregate function.
      *
-     * @return
+     * @param startItem left segment border inclusive.
+     * @param endItem   right segment border exclusive.
+     * @return Aggregated result for the segment.
      */
-    public ITEM_TYPE get(int l, int r) {
-        if (l >= items.length || r >= items.length) {
-            throw new IndexOutOfBoundsException("l or r is out of array size");
+    public ITEM_TYPE get(int startItem, int endItem) {
+        if (startItem < 0 || startItem >= items.length || endItem > items.length) {
+            throw new IndexOutOfBoundsException("startItem or endItem is out of array size");
         }
-        int firstNodeIndex = l / decomposedStep;
-        int lastNodeIndex = (r - 1) / decomposedStep;
-        ITEM_TYPE result = selectItem(l, Math.min(r, decomposed[firstNodeIndex].r));
+        if (startItem >= endItem) {
+            throw new IllegalArgumentException("startItem should be more than endItem");
+        }
+        int firstNodeIndex = startItem / itemsPerNode;
+        int lastNodeIndex = (endItem - 1) / itemsPerNode;
+        ITEM_TYPE result;
+        // Calculate result from the first Node.
+        if (startItem == decomposedNodes[firstNodeIndex].l && firstNodeIndex < lastNodeIndex) {
+            result = decomposedNodes[firstNodeIndex].aggregatedValue;
+        } else {
+            result = aggregateItems(startItem, Math.min(endItem, decomposedNodes[firstNodeIndex].r));
+        }
+
+        // Combine results from middle  nodes (excluding first and last)
         if (firstNodeIndex + 1 < lastNodeIndex) {
-            result = itemSelector.get(result, selectNode(firstNodeIndex + 1, lastNodeIndex));
+            result = aggregationFunction.get(result, aggregateNodes(firstNodeIndex + 1, lastNodeIndex));
         }
+        // Combine result with the last node.
         if (firstNodeIndex != lastNodeIndex) {
-            result = itemSelector.get(result, selectItem(decomposed[lastNodeIndex].l, r));
+            if (decomposedNodes[lastNodeIndex].r == endItem) {
+                result = aggregationFunction.get(result, decomposedNodes[lastNodeIndex].aggregatedValue);
+            } else {
+                result = aggregationFunction.get(result, aggregateItems(decomposedNodes[lastNodeIndex].l, endItem));
+            }
         }
         return result;
     }
 
-    private ITEM_TYPE selectItem(int l, int r) {
-        ITEM_TYPE item = items[l];
-        for (int i = l + 1; i < r; i++) {
-            item = itemSelector.get(item, items[i]);
+    private ITEM_TYPE aggregateItems(int startItem, int endItem) {
+        ITEM_TYPE item = items[startItem];
+        for (int i = startItem + 1; i < endItem; i++) {
+            item = aggregationFunction.get(item, items[i]);
         }
         return item;
     }
 
-    private ITEM_TYPE selectNode(int l, int r) {
-        ITEM_TYPE result = decomposed[l].item;
-        for (int i = l + 1; i < r; i++) {
-            result = itemSelector.get(result, decomposed[i].item);
+    private ITEM_TYPE aggregateNodes(int firstNode, int endNode) {
+        ITEM_TYPE result = decomposedNodes[firstNode].aggregatedValue;
+        for (int i = firstNode + 1; i < endNode; i++) {
+            result = aggregationFunction.get(result, decomposedNodes[i].aggregatedValue);
         }
         return result;
     }
 
+    public interface AggregationFunction<ITEM_TYPE> {
+        ITEM_TYPE get(ITEM_TYPE a, ITEM_TYPE b);
+    }
+
+    public static class MinFunction implements AggregationFunction<Integer> {
+
+        @Override
+        public Integer get(Integer a, Integer b) {
+            return Math.min(a, b);
+        }
+    }
+
+    /**
+     * Node represents aggregated value for items within [l, r) interval.
+     */
     private class Node {
-        private final ITEM_TYPE item;
+        private final ITEM_TYPE aggregatedValue;
         private final int l;
         private final int r;
 
         public Node(int l, int r) {
             this.l = l;
             this.r = r;
-            item = selectItem(l, r);
-        }
-    }
-
-    public interface ItemSelector<ITEM_TYPE> {
-        ITEM_TYPE get(ITEM_TYPE a, ITEM_TYPE b);
-    }
-
-    public static class MinSelector implements ItemSelector<Integer>{
-
-        @Override
-        public Integer get(Integer a, Integer b) {
-            return Math.min(a, b);
+            aggregatedValue = aggregateItems(l, r);
         }
     }
 }
