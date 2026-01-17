@@ -28,8 +28,11 @@ public class BinaryHeap<T extends Comparable<T>> {
         }
         T result = elements.get(1);
         swap(1, realSize);
+        elements.remove(realSize);
         --realSize;
-        swimDown();
+        if (realSize > 0) {
+            swimDown();
+        }
         return result;
     }
 

@@ -19,23 +19,19 @@ public class InOrderTraversal {
 
     public List<Integer> inOrderList(BinaryTreeNode root) {
         List<Integer> result = new ArrayList<>();
-        Deque<BinaryTreeNode> stack = new LinkedList<>();
-        Set<BinaryTreeNode> visited = new HashSet<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            BinaryTreeNode node = stack.peek();
-            if (!visited.contains(node)) {
-                visited.add(node);
-                if (node.getLeft() != null) {
-                    stack.push(node.getLeft());
-                }
-            } else {
-                stack.pop();
-                result.add(node.getVal());
-                if (node.getRight() != null) {
-                    stack.push(node.getRight());
-                }
+        if (root == null) return result;
+
+        Deque<BinaryTreeNode> stack = new ArrayDeque<>();
+        BinaryTreeNode curr = root;
+
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.getLeft();
             }
+            curr = stack.pop();
+            result.add(curr.getVal());
+            curr = curr.getRight();
         }
         return result;
     }
@@ -56,33 +52,37 @@ public class InOrderTraversal {
     }
 
     static class InOrderIterator implements Iterator<Integer> {
-        private final Deque<BinaryTreeNode> stack = new LinkedList<>();
-        private final Set<BinaryTreeNode> visited = new HashSet<>();
+        private final Deque<BinaryTreeNode> stack = new ArrayDeque<>();
+        private BinaryTreeNode current;
 
         public InOrderIterator(BinaryTreeNode root) {
+            // Objects.requireNonNull(root); // Original code required root.
+            // If root is null, iterator should be empty.
+            // But original: stack.push(root) -> throws NPE if root is null?
+            // Objects.requireNonNull(root) throws NPE.
+            // So behavior was: constructor throws NPE if root is null.
+            // I should preserve this behavior or handle null gracefully?
+            // "Objects.requireNonNull(root)" implies intended behavior.
             Objects.requireNonNull(root);
-            stack.push(root);
+            this.current = root;
         }
 
         @Override
         public boolean hasNext() {
-            return !stack.isEmpty();
+            return !stack.isEmpty() || current != null;
         }
 
         @Override
         public Integer next() {
-            while (!visited.contains(stack.peek())) {
-                BinaryTreeNode node = stack.peek();
-                visited.add(node);
-                if (node.getLeft() != null) {
-                    stack.push(node.getLeft());
-                }
+            if (!hasNext()) throw new NoSuchElementException();
+            while (current != null) {
+                stack.push(current);
+                current = current.getLeft();
             }
-            BinaryTreeNode next = stack.pop();
-            if (next.getRight() != null) {
-                stack.push(next.getRight());
-            }
-            return next.getVal();
+            BinaryTreeNode node = stack.pop();
+            Integer result = node.getVal();
+            current = node.getRight();
+            return result;
         }
     }
 }

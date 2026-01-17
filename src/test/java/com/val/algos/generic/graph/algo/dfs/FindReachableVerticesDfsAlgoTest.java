@@ -3,15 +3,14 @@ package com.val.algos.generic.graph.algo.dfs;
 import com.val.algos.generic.graph.Graph;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
 
 /**
  * @author valerjanka
@@ -27,13 +26,11 @@ public class FindReachableVerticesDfsAlgoTest {
 
     @Before
     public void setUp() {
-        graph = Mockito.mock(Graph.class);
-        when(graph.vertices()).thenReturn(VERTICES);
+        graph = new GraphStub();
     }
 
     @Test
     public void testHasNextStepPushAdj() throws Exception {
-        when(graph.adj(START_0)).thenReturn(ADJ_0);
         FindReachableVerticesDfsAlgo dfsAlgo = new FindReachableVerticesDfsAlgo(graph, START_0);
         assertTrue(dfsAlgo.hasNextStep());
         assertEquals(START_0, dfsAlgo.stepToNextVertex());
@@ -68,4 +65,30 @@ public class FindReachableVerticesDfsAlgoTest {
         assertEquals(START_0, dfsAlgo.getStart());
     }
 
+    private static class GraphStub implements Graph {
+        @Override
+        public List<Integer> adj(int v) {
+            if (v == START_0) return ADJ_0;
+            return Collections.emptyList();
+        }
+
+        @Override
+        public boolean removeAdj(int v, int w) {
+            return false;
+        }
+
+        @Override
+        public void addEdge(int v, int w) {
+        }
+
+        @Override
+        public int vertices() {
+            return VERTICES;
+        }
+
+        @Override
+        public int edges() {
+            return 0;
+        }
+    }
 }

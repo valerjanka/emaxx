@@ -2,7 +2,7 @@ package com.val.algos.generic.graph.algo.bfs;
 
 import com.val.algos.generic.graph.Graph;
 
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
@@ -28,17 +28,19 @@ public class BreadthFirstPaths {
     private void bfs() {
         marked[start] = true;
         parent[start] = start;
-        Queue<Integer> queue = new LinkedList<>();
+        Queue<Integer> queue = new ArrayDeque<>();
         queue.offer(start);
 
         while(!queue.isEmpty()) {
             int v = queue.poll();
-            graph.adj(v).stream().filter(w -> !marked[w]).forEach(w -> {
-                marked[w] = true;
-                distTo[w] = distTo[v] + 1;
-                parent[w] = v;
-                queue.offer(w);
-            });
+            for (int w : graph.adj(v)) {
+                if (!marked[w]) {
+                    marked[w] = true;
+                    distTo[w] = distTo[v] + 1;
+                    parent[w] = v;
+                    queue.offer(w);
+                }
+            }
         }
     }
 
