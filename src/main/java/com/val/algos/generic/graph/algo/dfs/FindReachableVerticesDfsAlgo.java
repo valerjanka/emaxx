@@ -3,7 +3,9 @@ package com.val.algos.generic.graph.algo.dfs;
 import com.val.algos.generic.graph.Graph;
 import com.val.algos.generic.graph.algo.dfs.result.FindReachableVerticesDfsResult;
 
-import java.util.*;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 /**
@@ -14,7 +16,7 @@ public class FindReachableVerticesDfsAlgo implements DfsAlgo {
     private final Graph graph;
     private final int start;
     private final boolean[] marked;
-    protected Deque<Integer> stack = new ArrayDeque<>();
+    protected Deque<Integer> stack = new LinkedList<>();
 
     public FindReachableVerticesDfsAlgo(Graph graph, int start) {
         marked = new boolean[graph.vertices()];
@@ -73,13 +75,10 @@ public class FindReachableVerticesDfsAlgo implements DfsAlgo {
             throw new IllegalStateException("Can't get vertex. Stack is empty");
         }
         int v = stack.getFirst();
-        List<Integer> adj = graph.adj(v);
-        ListIterator<Integer> it = adj.listIterator(adj.size());
-        while (it.hasPrevious()) {
-            int w = it.previous();
-            if (!marked[w]) {
-                stack.push(w);
-            }
+        Iterator<Integer> reverseOrder = graph.adj(v).stream().filter(w -> !marked[w])
+                .collect(Collectors.toCollection(LinkedList<Integer>::new)).descendingIterator();
+        while (reverseOrder.hasNext()) {
+            stack.push(reverseOrder.next());
         }
     }
 
