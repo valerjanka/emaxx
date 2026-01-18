@@ -32,11 +32,7 @@ public class BinaryHeapTest {
         elementsField.setAccessible(true);
         ArrayList<?> elements = (ArrayList<?>) elementsField.get(heap);
 
-        // If correct, size should be small (e.g. 1 or 2, just the dummy null and maybe one slot).
-        // If leaking, size will be ~1000.
-        // Current implementation starts with null, so index 0 is used.
-        // If we offer/poll 1000 times, and it never removes, size should be 1001.
-
+        // If correct, size should be small (e.g. 1, just the dummy null).
         assertTrue("Internal list size (" + elements.size() + ") should be small but was not. Memory leak detected.",
                    elements.size() < 100);
     }
