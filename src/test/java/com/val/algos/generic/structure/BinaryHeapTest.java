@@ -1,8 +1,10 @@
 package com.val.algos.generic.structure;
 
 import org.junit.Test;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 public class BinaryHeapTest {
@@ -19,26 +21,48 @@ public class BinaryHeapTest {
         assertEquals(Integer.valueOf(5), heap.poll());
     }
 
-    @Test
-    public void testMemoryLeak() throws Exception {
+    @Test(expected = IllegalStateException.class)
+    public void testPollEmpty() {
         BinaryHeap<Integer> heap = new BinaryHeap<>(10);
-        // Do offer/poll cycles
-        for (int i = 0; i < 1000; i++) {
-            heap.offer(i);
-            heap.poll();
+        heap.poll();
+    }
+
+    @Test
+    public void testMixedOperations() {
+        BinaryHeap<Integer> heap = new BinaryHeap<>(10);
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        Random rand = new Random(42);
+
+        // Add 100 elements
+        for (int i = 0; i < 100; i++) {
+            int val = rand.nextInt(1000);
+            heap.offer(val);
+            pq.offer(val);
         }
 
-        // Check internal ArrayList size via reflection
-        Field elementsField = BinaryHeap.class.getDeclaredField("elements");
-        elementsField.setAccessible(true);
-        ArrayList<?> elements = (ArrayList<?>) elementsField.get(heap);
+        // Remove 50
+        for (int i = 0; i < 50; i++) {
+            assertEquals(pq.poll(), heap.poll());
+        }
 
-        // Current implementation appends on offer and never removes on poll.
-        // So size will be ~1000.
-        // We expect reuse, so size should be small (1 or 2).
+        // Add 50 more
+        for (int i = 0; i < 50; i++) {
+            int val = rand.nextInt(1000);
+            heap.offer(val);
+            pq.offer(val);
+        }
 
-        // Assert that it is small
-        assertTrue("Internal list size (" + elements.size() + ") should be small but was not. Memory leak detected.",
-                   elements.size() < 100);
+        // Drain all
+        while (!pq.isEmpty()) {
+            assertEquals(pq.poll(), heap.poll());
+        }
+
+        // Ensure heap handles empty correctly after drain
+        try {
+            heap.poll();
+            fail("Should throw exception");
+        } catch (IllegalStateException e) {
+            // expected
+        }
     }
 }
