@@ -10,8 +10,10 @@ import com.val.algos.generic.graph.algo.dfs.result.FindComponentsDfsResult;
 
 import java.util.Arrays;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * @author valerjanka
@@ -93,9 +95,23 @@ public class DepthFirstSearch {
     }
 
     private static Iterable<Integer> getReverseOrder(List<Integer> adj) {
-        LinkedList<Integer> result = new LinkedList<>();
-        adj.forEach(result::addFirst);
-        return result;
+        return new Iterable<Integer>() {
+            @Override
+            public Iterator<Integer> iterator() {
+                final ListIterator<Integer> listIterator = adj.listIterator(adj.size());
+                return new Iterator<Integer>() {
+                    @Override
+                    public boolean hasNext() {
+                        return listIterator.hasPrevious();
+                    }
+
+                    @Override
+                    public Integer next() {
+                        return listIterator.previous();
+                    }
+                };
+            }
+        };
     }
 
     public static void main(String[] args) {
