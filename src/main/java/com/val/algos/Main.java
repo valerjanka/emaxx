@@ -89,7 +89,7 @@ public class Main {
     private static String next() throws IOException {
         while (tok == null || !tok.hasMoreTokens()) {
             line = in.readLine();
-            tok = new StringTokenizer(line.trim());
+            tok = new StringTokenizer(line);
         }
         return tok.nextToken();
     }
@@ -105,7 +105,7 @@ public class Main {
         if (tok == null || !tok.hasMoreTokens()) {
             line = in.readLine();
             if (line != null) {
-                tok = new StringTokenizer(line.trim());
+                tok = new StringTokenizer(line);
                 return hasNext();
             } else {
                 return false;
