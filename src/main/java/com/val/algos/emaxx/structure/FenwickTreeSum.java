@@ -16,11 +16,22 @@ package com.val.algos.emaxx.structure;
  * <b>INC</b>: to update element j, we need to update all elements from tree that cover j: <br>
  *     1) tree[j] += delta <br>
  *     2) <b>j = j | (j+1); while j < len</b> repeat from 1 <br>
- *
+ * <p>
+ * Time Complexity: O(log N) for both sum and update operations.
+ * Space Complexity: O(N) to store the tree.
  */
 public class FenwickTreeSum
 {
     int[] tree;
+
+    /**
+     * Constructs a Fenwick Tree from the given array.
+     * <p>
+     * Time Complexity: O(N log N)
+     * Space Complexity: O(N)
+     *
+     * @param a the input array
+     */
     public FenwickTreeSum(int[] a) {
         tree = new int[a.length];
         for(int i = 0; i < a.length; i++) {
@@ -30,6 +41,8 @@ public class FenwickTreeSum
 
     /**
      * Updates positions x = (x | (x + 1)) on delta
+     * <p>
+     * Time Complexity: O(log N)
      *
      * @param position of element in array
      * @param delta add to element
@@ -42,6 +55,8 @@ public class FenwickTreeSum
 
     /**
      * Sums elements from position l to r inclusively
+     * <p>
+     * Time Complexity: O(log N)
      *
      * @param l from position
      * @param r to position
@@ -53,6 +68,9 @@ public class FenwickTreeSum
 
     /**
      * Sums element from 0 to r inclusively
+     * <p>
+     * Time Complexity: O(log N)
+     *
      * @param r to position
      * @return sum
      */
