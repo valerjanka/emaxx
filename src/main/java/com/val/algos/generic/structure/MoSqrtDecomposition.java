@@ -126,7 +126,7 @@ public class MoSqrtDecomposition {
         private final int[] values;
         // temp array to store count of index in values on current segment
         private final int[] count;
-        private final PriorityQueue<Integer> pq = new PriorityQueue<>(new CountComparator());
+        private final TreeSet<Integer> sortedValues = new TreeSet<>(new CountComparator());
 
         public MostOftenFunction(int[] values) {
             this.values = values;
@@ -139,22 +139,27 @@ public class MoSqrtDecomposition {
 
         @Override
         public void add(int i) {
-            if(++count[values[i]] > 1) {
-                pq.remove(values[i]);
+            int val = values[i];
+            if (count[val] > 0) {
+                sortedValues.remove(val);
             }
-            pq.offer(values[i]);
+            count[val]++;
+            sortedValues.add(val);
         }
 
         @Override
         public void remove(int i) {
-            --count[values[i]];
-            pq.remove(values[i]);
-            pq.add(values[i]);
+            int val = values[i];
+            sortedValues.remove(val);
+            count[val]--;
+            if (count[val] > 0) {
+                sortedValues.add(val);
+            }
         }
 
         @Override
         public int currentResult() {
-            return pq.peek();
+            return sortedValues.first();
         }
 
         private class CountComparator implements Comparator<Integer> {
