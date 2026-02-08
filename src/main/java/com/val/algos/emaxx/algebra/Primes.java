@@ -60,36 +60,26 @@ public class Primes {
     }
 
     public ArrayList<Integer> calculatePrimes(int n) {
-        if(n < 2) {
+        if (n < 2) {
             return new ArrayList<>();
         }
-        int approximateSize = Math.max(16, (int) (n / Math.log(n)) + 1);
-        int[] primes = new int[2 * approximateSize];
-        int size = 0;
-        primes[size++] = 2;
-        for(int p = 3; p <= n; p+=2) {
-            if(isPrime(p, primes)) {
-                primes[size++] = p;
+        boolean[] isPrime = new boolean[n + 1];
+        java.util.Arrays.fill(isPrime, true);
+        isPrime[0] = isPrime[1] = false;
+        for (int p = 2; p * p <= n; p++) {
+            if (isPrime[p]) {
+                for (int i = p * p; i <= n; i += p) {
+                    isPrime[i] = false;
+                }
             }
         }
-        ArrayList<Integer> result = new ArrayList<>(size);
-        for(int i = 0; i < size; i++) {
-            result.add(primes[i]);
+        int approximateSize = Math.max(16, (int) (n / Math.log(n)) + 1);
+        ArrayList<Integer> result = new ArrayList<>(approximateSize);
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                result.add(i);
+            }
         }
         return result;
-    }
-
-    private boolean isPrime(int p, int[] primes)
-    {
-        int sqrt = (int)(Math.sqrt(p) + 0.000000000001);
-        for(int i : primes) {
-            if(i > sqrt) {
-                return true;
-            }
-            if(p % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }
