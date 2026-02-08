@@ -53,6 +53,11 @@ public class AsciiTrie {
 
     public String toString() {
         StringBuilder result = new StringBuilder();
+        buildString(result);
+        return result.toString();
+    }
+
+    private void buildString(StringBuilder result) {
         result.append("[");
         if (word != null) {
             result.append("\n").append(word).append(": ");
@@ -60,10 +65,10 @@ public class AsciiTrie {
         result.append("{");
         for (char c = 0; c < children.length; c++) {
             if (children[c] != null) {
-                result.append(c).append("->").append(children[c]);
+                result.append(c).append("->");
+                children[c].buildString(result);
             }
         }
         result.append("}]");
-        return result.toString();
     }
 }
