@@ -18,6 +18,9 @@ public class Primes {
      * 1.2 else we have already define the lowest prime.
      * 2. for all founded primes that < result[i]:
      * result[i * prime] = prime
+     * <p>
+     * Time Complexity: O(N) (Linear Sieve)
+     * Space Complexity: O(N)
      *
      * @param n max number
      * @return mas where i element is min prime divisor for i
@@ -40,8 +43,11 @@ public class Primes {
 
 
     /**
-     * Check iа n is prime or not. Complexity = sqrt(n)
+     * Check iа n is prime or not.
      * Also n is not prime if it lower than 2
+     * <p>
+     * Time Complexity: O(sqrt(n))
+     * Space Complexity: O(1)
      *
      * @param n number to check primality
      * @return is prime
@@ -59,6 +65,15 @@ public class Primes {
         return true;
     }
 
+    /**
+     * Calculates all prime numbers up to n using Sieve of Eratosthenes.
+     * <p>
+     * Time Complexity: O(N log log N)
+     * Space Complexity: O(N)
+     *
+     * @param n the upper bound for finding primes
+     * @return a list of prime numbers up to n
+     */
     public ArrayList<Integer> calculatePrimes(int n) {
         if (n < 2) {
             return new ArrayList<>();
