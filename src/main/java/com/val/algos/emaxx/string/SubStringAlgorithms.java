@@ -8,6 +8,12 @@ public class SubStringAlgorithms {
      * Return the length of the smallest substring t, so the specified string could be represented by contactenation of
      * 1 or more t.
      * <a href="http://e-maxx.ru/algo/z_function#9">http://e-maxx.ru/algo/z_function#9</a>
+     * <p>
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     *
+     * @param string the input string
+     * @return the length of the smallest compression substring
      */
     public static int leastCompression(char[] string) {
         int[] zFunction = StringUtils.zFunction(string);
@@ -22,6 +28,13 @@ public class SubStringAlgorithms {
 
     /**
      * The number of appearances of substring in string.
+     * <p>
+     * Time Complexity: O(N + M) where N is the string length and M is the substring length.
+     * Space Complexity: O(N + M)
+     *
+     * @param string the main string
+     * @param substring the substring to count
+     * @return the number of occurrences of the substring
      */
     public static int substringAmount(char[] string, char[] substring) {
         if (string == null || string.length == 0 || substring == null || substring.length == 0) {
