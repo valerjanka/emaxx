@@ -1,23 +1,49 @@
 package com.val.algos.emaxx.structure;
 
 /**
- * Min Binary Heap implementation similar to {@link java.util.PriorityQueue}
+ * Min Binary Heap implementation similar to {@link java.util.PriorityQueue}.
+ * <p>
+ * Time Complexity: O(log N) for offer and poll, O(1) for peek.
+ * Space Complexity: O(N) to store the elements.
+ *
  * @author valerjanka
  */
 public class BinaryHeap {
     private final int[] keys;
     private int size = 0;
 
+    /**
+     * Constructs a Binary Heap with the specified capacity.
+     * <p>
+     * Space Complexity: O(N)
+     *
+     * @param size the maximum number of elements the heap can hold
+     */
     public BinaryHeap(int size) {
         this.keys = new int[size + 1];
     }
 
+    /**
+     * Inserts the specified element into this priority queue.
+     * <p>
+     * Time Complexity: O(log N)
+     *
+     * @param key the element to add
+     */
     public void offer(int key) {
         ++size;
         keys[size] = key;
         swim(size);
     }
 
+    /**
+     * Retrieves, but does not remove, the head of this queue.
+     * <p>
+     * Time Complexity: O(1)
+     *
+     * @return the head of this queue
+     * @throws IllegalStateException if this queue is empty
+     */
     public int peek() {
         if(size == 0) {
             throw new IllegalStateException("Can't peek min element from empty queue");
@@ -25,6 +51,14 @@ public class BinaryHeap {
         return keys[1];
     }
 
+    /**
+     * Retrieves and removes the head of this queue.
+     * <p>
+     * Time Complexity: O(log N)
+     *
+     * @return the head of this queue
+     * @throws IllegalStateException if this queue is empty
+     */
     public int poll() {
         if(size == 0) {
             throw new IllegalStateException("Can't poll min element from empty queue");
