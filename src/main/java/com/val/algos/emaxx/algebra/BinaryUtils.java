@@ -10,6 +10,9 @@ public class BinaryUtils {
     /**
      * Returns number ^ degree % mod
      * All numbers < MAX_INT
+     * <p>
+     * Time Complexity: O(log degree)
+     * Space Complexity: O(1)
      *
      * @param number to be powered
      * @param degree to which power the number
@@ -32,6 +35,10 @@ public class BinaryUtils {
      * Returns a*b % mod
      * 0 < a,b < MAX_LONG/2
      * a*b = a * (2^k1 + 2^k2 + ...)
+     * <p>
+     * Time Complexity: O(log b)
+     * Space Complexity: O(1)
+     *
      * @param a first factor
      * @param b second factor
      * @param mod modulo
