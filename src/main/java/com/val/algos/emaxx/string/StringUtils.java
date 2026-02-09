@@ -9,9 +9,6 @@ public class StringUtils {
      * Description: <a href="http://e-maxx.ru/algo/z_function">http://e-maxx.ru/algo/z_function</a>
      * <p>
      * Examples: "abacaba" -> 0010301 "aaaaa" -> 04321
-     * <p>
-     * Time Complexity: O(N)
-     * Space Complexity: O(N)
      *
      * @param string array of chars
      * @return z-function
@@ -39,15 +36,7 @@ public class StringUtils {
     }
 
     /**
-     * Calculates the prefix function for the given string.
-     * <p>
      * <a href="http://e-maxx.ru/algo/prefix_function">http://e-maxx.ru/algo/prefix_function</a>
-     * <p>
-     * Time Complexity: O(N)
-     * Space Complexity: O(N)
-     *
-     * @param string the input string
-     * @return an array representing the prefix function values
      */
     public static int[] prefixFunction(char[] string) {
         if (string == null)
