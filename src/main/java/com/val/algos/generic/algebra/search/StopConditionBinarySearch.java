@@ -7,9 +7,6 @@ public class StopConditionBinarySearch {
 
     /**
      * Search with specified stop condition and returns index of an element if stop condition returns 0 or -1 otherwise.
-     * <p>
-     * Time Complexity: O(log n)
-     * Space Complexity: O(1)
      *
      * @param n             do binary search from 0 to n-1
      * @param stopCondition checks index by some condition and returns 0 if it's result index,
@@ -35,9 +32,6 @@ public class StopConditionBinarySearch {
 
     /**
      * Search for element position in given array by using StopCondition
-     * <p>
-     * Time Complexity: O(log n)
-     * Space Complexity: O(1)
      *
      * @param array   to be searched
      * @param element to search
@@ -48,31 +42,11 @@ public class StopConditionBinarySearch {
         return search(array.length, stopCondition);
     }
 
-    /**
-     * Search for the first occurrence of the target element.
-     * <p>
-     * Time Complexity: O(log n)
-     * Space Complexity: O(1)
-     *
-     * @param array  to be searched
-     * @param target to search
-     * @return index of the first occurrence or -1
-     */
     public static int searchFirst(int[] array, int target) {
         StopOnFirstExistCondition stopCondition = new StopOnFirstExistCondition(array, target);
         return search(array.length, stopCondition);
     }
 
-    /**
-     * Search for the first element greater than the target.
-     * <p>
-     * Time Complexity: O(log n)
-     * Space Complexity: O(1)
-     *
-     * @param array  to be searched
-     * @param target to search
-     * @return index of the first greater element or -1
-     */
     public static int searchFirstGreater(int[] array, int target) {
         IntNextGreaterToCondition stopCondition = new IntNextGreaterToCondition(array, target);
         return search(array.length, stopCondition);

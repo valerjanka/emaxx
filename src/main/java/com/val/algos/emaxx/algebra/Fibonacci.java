@@ -13,9 +13,6 @@ public class Fibonacci {
      * <p/>
      * Calculate Fn via fast binary calculation
      * Implements next logic: (F0 F1) * (0 1, 1 1)^n = (Fn-1 Fn)
-     * <p>
-     * Time Complexity: O(log n)
-     * Space Complexity: O(1)
      *
      * @param n the number of Fibonacci number
      * @return nth value of Fibonacci number using fast binary exponentiation

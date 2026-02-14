@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 /**
  * Generic min binary heap implementation
- * <p>
- * Space Complexity: O(N)
  *
  * @author valerjanka
  */
@@ -21,28 +19,11 @@ public class BinaryHeap<T extends Comparable<T>> {
         elements.add(null);
     }
 
-    /**
-     * Inserts the specified element into this heap.
-     * <p>
-     * Time Complexity: O(log N)
-     * Space Complexity: O(1)
-     *
-     * @param element the element to add
-     */
     public void offer(T element) {
         elements.add(element);
         swimUp();
     }
 
-    /**
-     * Retrieves and removes the head (minimum element) of this heap.
-     * <p>
-     * Time Complexity: O(log N)
-     * Space Complexity: O(1)
-     *
-     * @return the head of this heap
-     * @throws IllegalStateException if this heap is empty
-     */
     public T poll() {
         if (isEmpty()) {
             throw new IllegalStateException("Can't delete min element from empty queue");

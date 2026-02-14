@@ -14,15 +14,6 @@ public class SqrtDecomposition<ITEM_TYPE> {
     private Node[] decomposedNodes;
     private int itemsPerNode;
 
-    /**
-     * Constructs the SqrtDecomposition structure.
-     * <p>
-     * Time Complexity: O(N)
-     * Space Complexity: O(N) (storing nodes)
-     *
-     * @param items               input array
-     * @param aggregationFunction function to aggregate values
-     */
     public SqrtDecomposition(ITEM_TYPE[] items, AggregationFunction<ITEM_TYPE> aggregationFunction) {
         this.items = items;
         this.aggregationFunction = aggregationFunction;
@@ -41,9 +32,6 @@ public class SqrtDecomposition<ITEM_TYPE> {
 
     /**
      * Calculate result on [l, r) segment by aggregate function.
-     * <p>
-     * Time Complexity: O(sqrt(N))
-     * Space Complexity: O(1)
      *
      * @param startItem left segment border inclusive.
      * @param endItem   right segment border exclusive.
