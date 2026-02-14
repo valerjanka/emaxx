@@ -3,6 +3,8 @@ package com.val.algos.emaxx.algebra;
 /**
  * Created 4/11/2019
  *
+ * <a href="http://e-maxx.ru/algo/binary_search">http://e-maxx.ru/algo/binary_search</a>
+ *
  * @author valerjanka
  */
 public class BinarySearch {
