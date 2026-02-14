@@ -8,9 +8,6 @@ package com.val.algos.emaxx.algebra;
 public class BinarySearch {
     /**
      * Search for element position in given sorted array
-     * <p>
-     * Time Complexity: O(log N)
-     * Space Complexity: O(1)
      *
      * @param array   to be searched. Should be sorted.
      * @param element to search

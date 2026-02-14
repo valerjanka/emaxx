@@ -36,9 +36,6 @@ public class MoSqrtDecomposition {
     /**
      * Return the count of values in range [L, R] which are repeated at least
      * {@link MoSqrtDecomposition#repeated} times
-     * <p>
-     * Time Complexity: O((N + M) * sqrt(N)) where N is array length and M is number of queries.
-     * Space Complexity: O(N + M) for storing counts and query mapping.
      *
      * @param queries keep left index for each segment inclusive and right index for each segment exclusive
      * @return array with answers for each query

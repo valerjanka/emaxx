@@ -16,11 +16,6 @@ public class AsciiTrie {
 
     /**
      * Builds trie for the specified word. Skips if already exists.
-     * <p>
-     * Time Complexity: O(L) where L is the length of the word.
-     * Space Complexity: O(L * 128) in the worst case (new nodes).
-     *
-     * @param word the word to add
      */
     public void addWord(String word) {
         AsciiTrie current = this;
@@ -36,9 +31,6 @@ public class AsciiTrie {
 
     /**
      * Searches a word with max length that is a substring of the specified string that starts from offset index.
-     * <p>
-     * Time Complexity: O(L) where L is the length of the string (or max depth of trie).
-     * Space Complexity: O(1)
      *
      * @param string from which a word is searching.
      * @param offset start index in a string to search for a word.

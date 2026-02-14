@@ -6,14 +6,6 @@ package com.val.algos.generic.algebra;
 public class SquareMatrix {
     private final int[][] matrix;
 
-    /**
-     * Creates a square matrix of size n x n.
-     * <p>
-     * Time Complexity: O(n^2)
-     * Space Complexity: O(n^2)
-     *
-     * @param n size of the matrix
-     */
     public SquareMatrix(int n) {
         matrix = new int[n][n];
     }

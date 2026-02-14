@@ -30,9 +30,6 @@ public class MoSqrtDecomposition {
 
     /**
      * Add query for offline processing.
-     * <p>
-     * Time Complexity: O(1)
-     * Space Complexity: O(1)
      */
     public void addQuery(int l, int r) {
         queries.add(new Query(l, r, queries.size()));
@@ -40,9 +37,6 @@ public class MoSqrtDecomposition {
 
     /**
      * Calculate answers for previous added queries
-     * <p>
-     * Time Complexity: O((N + M) * sqrt(N))
-     * Space Complexity: O(M) for sorting and result
      */
     public int[] getAnswers() {
         sort(queries);
