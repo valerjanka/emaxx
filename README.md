@@ -33,7 +33,18 @@ added generic implementations to some problems (package `com.val.algos.generic`)
    - Calculates Fibonacci numbers by using fast binary calculation and matrix
 4. **Primes**
    - Lowest prime divisor for all numbers to n (`O(n)`)
+   - Factorization (`O(sqrt(n))`)
+   - Sieve of Eratosthenes (`O(n log log n)`)
 5. **Binary Search**
+6. **Euler's Totient Function**
+   - Calculate phi(n) (`O(sqrt(n))`)
+   - Calculate phi from 1 to n (`O(n log log n)`)
+7. **Discrete Logarithm**
+   - Baby-step Giant-step algorithm to solve `a^x = b (mod m)` (`O(sqrt(m))`)
+8. **Primitive Root**
+   - Find generator of multiplicative group modulo p (`O(log^c p)`)
+9. **Chinese Remainder Theorem**
+   - Garner's Algorithm for system of congruences (`O(k^2)`)
 
 ### String
 
