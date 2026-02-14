@@ -15,6 +15,15 @@ class StopOnFirstExistCondition implements StopConditionBinarySearch.StopConditi
         this.target = target;
     }
 
+    /**
+     * Compares the element at the given position with the target.
+     * <p>
+     * Time Complexity: O(1)
+     * Space Complexity: O(1)
+     *
+     * @param position to check
+     * @return comparison result
+     */
     @Override
     public int compare(int position) {
         if (array[position] == target) {

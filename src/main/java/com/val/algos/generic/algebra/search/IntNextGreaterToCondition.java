@@ -12,6 +12,15 @@ class IntNextGreaterToCondition implements StopConditionBinarySearch.StopConditi
         this.pivot = pivot;
     }
 
+    /**
+     * Compares the element at the given position with the pivot.
+     * <p>
+     * Time Complexity: O(1)
+     * Space Complexity: O(1)
+     *
+     * @param position to check
+     * @return comparison result
+     */
     @Override
     public int compare(int position) {
         int compare = array[position] - pivot;

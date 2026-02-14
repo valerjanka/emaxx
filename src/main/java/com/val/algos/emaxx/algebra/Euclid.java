@@ -9,6 +9,9 @@ public class Euclid {
 
     /**
      * Calculates greatest common divisor recursively.
+     * <p>
+     * Time Complexity: O(log min(a, b))
+     * Space Complexity: O(log min(a, b))
      *
      * @param a first number
      * @param b second number
@@ -24,6 +27,10 @@ public class Euclid {
 
     /**
      * Calculate greater common divisor iteratively
+     * <p>
+     * Time Complexity: O(log min(a, b))
+     * Space Complexity: O(1)
+     *
      * @param a first number
      * @param b second number
      * @return GCD(a,b)
@@ -43,6 +50,9 @@ public class Euclid {
      * lcm = a / gcd * b;
      * <p>
      * GCD can not be 0
+     * <p>
+     * Time Complexity: O(log min(a, b))
+     * Space Complexity: O(1)
      *
      * @param a first number
      * @param b second number
@@ -58,6 +68,9 @@ public class Euclid {
      * Recalculate in each recursion iteration algorithm:
      * x = y1 - b/a * x1;
      * y = x1;
+     * <p>
+     * Time Complexity: O(log min(a, b))
+     * Space Complexity: O(log min(a, b))
      *
      * @param a first number
      * @param b second number
@@ -83,6 +96,10 @@ public class Euclid {
      * 3. Algorithm:
      *      - if c % gcd(a,b) = 0 and c != gcd:  solve: ax+by=gcd and result will be: x0=x0*c/gcd, y0=y0*c/gcd
      *      - find x0, y0 via Euclid algorithm
+     * <p>
+     * Time Complexity: O(log min(a, b))
+     * Space Complexity: O(log min(a, b))
+     *
      * @param a first number
      * @param b second number
      * @param c result of equation
@@ -106,6 +123,9 @@ public class Euclid {
      * Calculates inverse= a^-1 mod m =>  a * inverse = 1 mod m.
      * <p>
      * GCD of a and m must be 1. Otherwise - IllegalArgumentException.
+     * <p>
+     * Time Complexity: O(log m)
+     * Space Complexity: O(log m)
      *
      * @param a number for which we calculate inverse element
      * @param m modulo
@@ -124,6 +144,10 @@ public class Euclid {
     /**
      * Calculates inverse elements for all from 1 to m-1.
      *  Formula: result[i] = (m - (m/i) * result[m%i] % m) % m;
+     * <p>
+     * Time Complexity: O(m)
+     * Space Complexity: O(m)
+     *
      * @param m prime number
      * @return array where i-th element = inverse to i element
      */

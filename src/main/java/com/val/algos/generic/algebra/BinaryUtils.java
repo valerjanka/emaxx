@@ -5,6 +5,17 @@ package com.val.algos.generic.algebra;
  */
 public class BinaryUtils {
 
+    /**
+     * Generic binary exponentiation (or similar operation).
+     * <p>
+     * Time Complexity: O(log degree)
+     * Space Complexity: O(1)
+     *
+     * @param number base number
+     * @param degree exponent
+     * @param action defines the operation
+     * @return result of operation
+     */
     public static long binary(long number, long degree, BinaryStepAction<Long> action) {
         long result = action.zeroResult();
         while(degree > 0) {
@@ -17,6 +28,17 @@ public class BinaryUtils {
         return result;
     }
 
+    /**
+     * Generic binary exponentiation (or similar operation) for any type T.
+     * <p>
+     * Time Complexity: O(log degree)
+     * Space Complexity: O(1)
+     *
+     * @param number base number
+     * @param degree exponent
+     * @param action defines the operation
+     * @return result of operation
+     */
     public static <T> T binary(T number, long degree, BinaryStepAction<T> action) {
         T result = action.zeroResult();
         while(degree > 0) {
