@@ -27,15 +27,20 @@ public class FenwickTreeSum
     /**
      * Constructs a Fenwick Tree from the given array.
      * <p>
-     * Time Complexity: O(N log N)
+     * Time Complexity: O(N)
      * Space Complexity: O(N)
      *
      * @param a the input array
      */
     public FenwickTreeSum(int[] a) {
-        tree = new int[a.length];
-        for(int i = 0; i < a.length; i++) {
-            inc(i, a[i]);
+        int n = a.length;
+        tree = new int[n];
+        for (int i = 0; i < n; i++) {
+            tree[i] += a[i];
+            int j = i | (i + 1);
+            if (j < n) {
+                tree[j] += tree[i];
+            }
         }
     }
 
